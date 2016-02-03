@@ -48,11 +48,11 @@ public class CheckIdentifier extends Verilog2001BaseListener {
         register = false;
     }
 
-	@Override public void enterList_of_port_declarations(Verilog2001Parser.List_of_port_declarationsContext ctx) {
+    @Override public void enterList_of_port_declarations(Verilog2001Parser.List_of_port_declarationsContext ctx) {
         register = true;
     }
 
-	@Override public void exitList_of_port_declarations(Verilog2001Parser.List_of_port_declarationsContext ctx) {
+    @Override public void exitList_of_port_declarations(Verilog2001Parser.List_of_port_declarationsContext ctx) {
         register = false;
     }
 
@@ -60,7 +60,7 @@ public class CheckIdentifier extends Verilog2001BaseListener {
         port = true;
     }
 
-	@Override public void exitPort_identifier(Verilog2001Parser.Port_identifierContext ctx) {
+    @Override public void exitPort_identifier(Verilog2001Parser.Port_identifierContext ctx) {
         port = false;
     }
 
@@ -68,7 +68,7 @@ public class CheckIdentifier extends Verilog2001BaseListener {
         connect = true;
     }
 
-	@Override public void exitList_of_port_connections(Verilog2001Parser.List_of_port_connectionsContext ctx) {
+    @Override public void exitList_of_port_connections(Verilog2001Parser.List_of_port_connectionsContext ctx) {
         connect = false;
     }
 
@@ -93,14 +93,15 @@ public class CheckIdentifier extends Verilog2001BaseListener {
         }
     }
 
-	@Override public void enterIdentifier(Verilog2001Parser.IdentifierContext ctx) {
+    @Override public void enterIdentifier(Verilog2001Parser.IdentifierContext ctx) {
         check(ctx.getText(), ctx.getStart().getLine());
     }
 
-	@Override public void enterSimple_hierarchical_branch(Verilog2001Parser.Simple_hierarchical_branchContext ctx) {
+    @Override public void enterSimple_hierarchical_branch(Verilog2001Parser.Simple_hierarchical_branchContext ctx) {
         boolean old_register = register;
         register = false;
         check(ctx.getText(), ctx.getStart().getLine());
         register = old_register;
     }
 }
+

@@ -15,3 +15,4 @@ public class Check {
         walker.walk(new CheckIdentifier(), tree);
     }
 }
+
